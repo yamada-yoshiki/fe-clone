@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "管理者ログインテスト", type: :system do
+RSpec.describe '管理者ログインテスト', type: :system do
   it '未ログイン状態の管理画面アクセスはログイン画面に飛ぶ' do
     visit admins_questions_path
     expect(page).to have_current_path new_admin_session_path
