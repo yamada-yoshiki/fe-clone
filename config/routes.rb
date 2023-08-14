@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root 'questions#index'
 
-  # Defines the root path route ("/")
-  root "questions#index"
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+  }
+
+  namespace :admins do
+    resources :questions
+  end
 end
