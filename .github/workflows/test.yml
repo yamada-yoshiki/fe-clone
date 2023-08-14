@@ -22,6 +22,10 @@ jobs:
         with:
           path: vendor/bundle
           key: bundle-${{ hashFiles('**/Gemfile.lock') }}
+      - name: Bundler and gem install
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3 --path vendor/bundle
       - name: db create
         run: bundle exec rails db:create db:schema:load --trace
       - name: run rspec
