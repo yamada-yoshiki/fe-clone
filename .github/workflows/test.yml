@@ -10,7 +10,7 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
         env:
           POSTGRES_HOST_AUTH_METHOD: 'trust'
-          POSTGRES_DB: fe_clone_test
+          POSTGRES_DB: test
     container:
       image: ruby:3.1.2
       env:
@@ -32,6 +32,6 @@ jobs:
 
       - name: Set up database
         run: |
-          bin/rails db:create
+          bundle exec rails db:create
       - name: run rspec
         run: bundle exec rspec
