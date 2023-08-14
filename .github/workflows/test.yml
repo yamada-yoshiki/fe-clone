@@ -26,6 +26,8 @@ jobs:
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3 --path vendor/bundle
+      - name: bin/rails db:create
+        run: bin/rails db:create
       - name: db create
         run: bundle exec rails db:create db:schema:load --trace
       - name: run rspec
