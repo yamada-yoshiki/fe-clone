@@ -6,11 +6,12 @@ jobs:
 
     services:
       postgres:
-        image: postgres:10
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        image: postgres:latest
+        ports:
+          - 5432:5432
         env:
-          POSTGRES_HOST_AUTH_METHOD: 'trust'
-          POSTGRES_DB: test
+          POSTGRES_USER: fe_clone
+          POSTGRES_DB: fe_clone_test
     container:
       image: ruby:3.1.2
       env:
