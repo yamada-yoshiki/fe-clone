@@ -1,0 +1,30 @@
+name: Test
+on: [push]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:10
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        env:
+          POSTGRES_HOST_AUTH_METHOD: 'trust'
+
+    container:
+      image: ruby:3.1.2
+      env:
+        RAILS_ENV: test
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: bundle-${{ hashFiles('**/Gemfile.lock') }}
+      - name: set database.yml
+        run: cp -v config/database.ci.yml config/database.yml
+      - name: db create
+        run: bundle exec rails db:create db:schema:load --trace
+      - name: run rspec
+        run: bundle exec rspec
