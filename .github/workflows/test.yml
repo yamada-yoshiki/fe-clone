@@ -26,9 +26,10 @@ jobs:
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3 --path vendor/bundle
-      - name: bin/rails db:create
-        run: bin/rails db:create
-      - name: db create
-        run: bundle exec rails db:create db:schema:load --trace
+      - name: Database create and migrate
+        run: |
+          cp config/database.yml.ci config/database.yml
+          bundle exec rails db:create RAILS_ENV=test
+          bundle exec rails db:migrate RAILS_ENV=test
       - name: run rspec
         run: bundle exec rspec
