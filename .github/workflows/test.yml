@@ -33,6 +33,6 @@ jobs:
 
       - name: Set up database
         run: |
-          bundle exec rails db:create
+          bundle exec rake db:create
       - name: run rspec
         run: bundle exec rspec
