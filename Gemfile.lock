@@ -321,8 +321,8 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
-  devise (~> 4.9)
-  dockerfile-rails (>= 1.5)
+  devise
+  dockerfile-rails
   factory_bot_rails
   importmap-rails
   jbuilder

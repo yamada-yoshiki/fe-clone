@@ -78,6 +78,6 @@ group :development do
 end
 
 # dockerfile
-gem 'dockerfile-rails', '>= 1.5', group: :development
+gem 'dockerfile-rails', group: :development
 # devise
-gem 'devise', '~> 4.9'
+gem 'devise'
