@@ -1,5 +1,5 @@
 <div class="w-full max-w-xs">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" }) do |f| %>
+  <%= form_with(model: resource, scope: resource_name, url: session_path(resource_name), html: { class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" }) do |f| %>
     <p class="notice text-red-600"><%= notice %></p>
     <p class="alert text-red-600"><%= alert %></p>
     <div class="mb-4">
