@@ -1,0 +1,8 @@
+inherit_gem:
+  sgcop: rails/rubocop.yml
+
+AllCops:
+  Exclude:
+    - 'config/**/*'
+    - 'bin/**/*'
+    - 'config.ru'
