@@ -24,9 +24,6 @@ gem 'turbo-rails'
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem 'stimulus-rails'
 
-# Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
-gem 'tailwindcss-rails'
-
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -78,3 +75,9 @@ end
 gem 'dockerfile-rails', group: :development
 # devise
 gem 'devise'
+
+gem "cssbundling-rails", "~> 1.3"
+
+gem "bootstrap", "~> 5.3"
+
+gem "sassc-rails", "~> 2.1"
