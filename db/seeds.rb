@@ -17,7 +17,7 @@ Question.all.each do |q|
   )
   4.times do |i|
     q.question_options.create!(
-      text: "選択肢#{i}",
+      sentence: "選択肢#{i}",
       display_order: i + 1
     )
   end
