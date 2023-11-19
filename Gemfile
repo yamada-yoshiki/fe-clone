@@ -81,3 +81,5 @@ gem "cssbundling-rails", "~> 1.3"
 gem "bootstrap", "~> 5.3"
 
 gem "sassc-rails", "~> 2.1"
+
+gem "carrierwave"
