@@ -1,11 +1,16 @@
-<div class="border-2">
-  <div class="text-red-800">
-    <%= @question.title %>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= @question.title %></h5>
+    <% @question_contents.each do |item| %>
+      <%= item.sentence %>
+    <% end %>
   </div>
-  <div>
-    <%= @question_contents %>
-  </div>
-  <div>
-    <%= @question_options %>
-  </div>
+  <ul class="list-group list-group-flush">
+    <% @question_options.each do |item| %>
+      <li class="list-group-item"><%= item.sentence %></li>
+    <% end %>
+  </ul>
+</div>
+<div>
+  <button><%= link_to '問題一覧', admins_questions_path %></button>
 </div>
