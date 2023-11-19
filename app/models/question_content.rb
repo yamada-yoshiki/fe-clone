@@ -1,4 +1,5 @@
 class QuestionContent < ApplicationRecord
+  mount_uploader :image_path, QuestionImageUploader
   belongs_to :question
 
   validate :check_content
