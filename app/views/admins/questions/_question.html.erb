@@ -1,4 +1,7 @@
-<div class="row-auto">
-  <%= link_to question.title, admins_question_path(question) %>
-</div>
+<li class="list-group-item d-flex justify-content-between">
+  <%= question.title %>
+  <button type="button" class="btn btn-outline-primary">
+    <%= link_to '詳細', admins_question_path(question) %>
+  </button>
+</li>
 
