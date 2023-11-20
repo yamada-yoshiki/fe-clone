@@ -1,7 +1,7 @@
 <div class="w-full">
   <div class="flex flex-col items-center justify-between mb-6">
     <h1>問題一覧</h1>
-    <%= button_to '新規作成', new_admins_question_path, class: 'btn btn-primary'%>
+    <%= link_to '新規作成', new_admins_question_path, class: 'btn btn-primary'%>
   </div>
   <ul class="list-group">
     <%= render @questions %>
