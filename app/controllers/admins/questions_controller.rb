@@ -4,6 +4,8 @@ class Admins::QuestionsController < Admins::ApplicationController
   end
 
   def new
+    @question = Question.new
+    @question_contents = []
   end
 
   def show

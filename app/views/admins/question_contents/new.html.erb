@@ -1,0 +1,5 @@
+<%# 全体をturbo_frame_tagで囲う %>
+<%# 編集をクリックすると、_cat.html.erbの<turbo-frame>部分がこの部分に置換される %>
+<%= turbo_frame_tag 'new_question_content' do %>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+<% end %>
