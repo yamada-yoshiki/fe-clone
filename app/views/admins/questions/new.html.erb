@@ -7,26 +7,47 @@
   <div class="mb-3 d-flex justify-between">
     <h4>問題内容</h4>
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      追加
-    </button>
+    <div>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#textAreaModal">
+        問題文
+      </button>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#imageModal">
+        画像
+      </button>
+    </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade modal-lg" id="textAreaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">問題要素を追加</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">問題文を追加</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <button type="button" class="btn btn-primary">問題文</button>
-            <button type="button" class="btn btn-primary">画像</button>
-            <%= link_to '問題文',
-              new_admins_question_content_path(question_id: @question.id),
-              class: "btn btn-outline-primary",
-              data: { turbo_frame: "new_question_content"}
-            %>
+            <div><textarea class="border h-100 w-full" id="exampleFormControlTextarea1" rows="5"></textarea></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">追加</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+          </div>
+        </div>
+      </div>  
+    </div>
+    <!-- Modal end -->
+    <!-- Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">画像を追加</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div  class="input-group">
+              <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+              <button class="btn btn-outline-primary" type="button" id="inputGroupFileAddon04">追加</button>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
@@ -44,7 +65,7 @@
     <% @question_contents.each do |content| %>
 
       <%= turbo_frame_tag content do %>
-        <div class="card w-full flex-row justify-between rounded border-0">
+        <div class="card w-full flex-row justify-between rounded border-0 mb-1">
           <div class="col-1 text-bg-light border rounded-start d-flex align-items-center justify-content-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-grip-horizontal" viewBox="0 0 16 16">
               <path d="M2 8a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
