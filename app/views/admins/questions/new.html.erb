@@ -6,56 +6,11 @@
   </div>
   <div class="mb-3 d-flex justify-between">
     <h4>問題内容</h4>
-    <!-- Button trigger modal -->
     <div>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#textAreaModal">
-        問題文
-      </button>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#imageModal">
-        画像
-      </button>
+      <%= render partial: 'admins/question_contents/sentence_modal' %>
+      <%= render partial: 'admins/question_contents/image_modal' %>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade modal-lg" id="textAreaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">問題文を追加</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div><textarea class="border h-100 w-full" id="exampleFormControlTextarea1" rows="5"></textarea></div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">追加</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
-          </div>
-        </div>
-      </div>  
-    </div>
-    <!-- Modal end -->
-    <!-- Modal -->
-    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">画像を追加</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div  class="input-group">
-              <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-              <button class="btn btn-outline-primary" type="button" id="inputGroupFileAddon04">追加</button>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
-          </div>
-        </div>
-      </div>  
-    </div>
-    <!-- Modal end -->
   </div>
 
   <div class="flex-col">
@@ -71,14 +26,9 @@
               <path d="M2 8a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
             </svg>
           </div>
-          <div class="col-10"><textarea class="border h-100 w-full" id="exampleFormControlTextarea1" rows="5"></textarea></div>
+          <div class="col-10" style="height: 9em; white-space: pre-wrap;"><p class="border h-100 w-full rounded-end" ></p></div>
           <div class="col-1 rounded-end d-flex align-items-center justify-content-end">
-            <button class="btn btn-danger">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
-              </svg>
-            </button>
-            
+            <%= link_to "編集", edit_admins_question_content_path(content), class: "btn btn-primary" %>
           </div>
         </div>
       <% end %>
