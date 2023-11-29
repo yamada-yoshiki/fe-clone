@@ -5,7 +5,7 @@
         <path d="M2 8a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
       </svg>
     </div>
-    <div class="col-10" style="height: 9em; white-space: pre-wrap;"><p class="border h-100 w-full rounded-end" ></p></div>
+    <div class="col-10" style="height: 9em; white-space: pre-wrap;"><p class="border h-100 w-full rounded-end px-3 py-2" ><%= question_content.sentence %></p></div>
     <div class="col-1 rounded-end d-flex align-items-center justify-content-end">
       <%= link_to "編集", edit_admins_question_content_path(question_content), class: "btn btn-primary" %>
     </div>
