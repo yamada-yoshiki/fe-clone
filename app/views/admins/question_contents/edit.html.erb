@@ -1,0 +1,21 @@
+<%= turbo_frame_tag @question_content do %>
+  <%= form_with(model: @question_content, url: admins_question_content_path, local: true) do |form| %>
+
+    <div class="card w-full flex-row justify-between rounded border-0 mb-1">
+      <div class="col-1 text-bg-light border rounded-start d-flex align-items-center justify-content-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-grip-horizontal" viewBox="0 0 16 16">
+          <path d="M2 8a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+      </div>
+      <div class="col-10"><%= form.text_area :sentence, class: 'h-100 border w-full rounded-end', rows: 5 %></div>
+      <%= form.hidden_field :display_order, value: @question_content.display_order %>
+
+      <div class="col-1 flex flex-column align-content-start align-items-end justify-content-center">
+        <%= form.submit "保存", class: "btn btn-outline-primary mb-2" %>
+        <button class="btn btn-outline-danger">
+          削除
+        </button>      
+      </div>
+    </div>
+  <% end %>
+<% end %>
