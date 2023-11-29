@@ -17,21 +17,6 @@
     <%# 登録リンククリック時に、cats#newの新規登録フォーム部分をここに置換する %>
     <%= turbo_frame_tag "new_question_content" %>
 
-    <% @question_contents.each do |content| %>
-
-      <%= turbo_frame_tag content do %>
-        <div class="card w-full flex-row justify-between rounded border-0 mb-1">
-          <div class="col-1 text-bg-light border rounded-start d-flex align-items-center justify-content-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-grip-horizontal" viewBox="0 0 16 16">
-              <path d="M2 8a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-            </svg>
-          </div>
-          <div class="col-10" style="height: 9em; white-space: pre-wrap;"><p class="border h-100 w-full rounded-end" ></p></div>
-          <div class="col-1 rounded-end d-flex align-items-center justify-content-end">
-            <%= link_to "編集", edit_admins_question_content_path(content), class: "btn btn-primary" %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+    <%= render @question_contents %>
   </div>
 </div>
