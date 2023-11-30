@@ -16,7 +16,8 @@
   <div class="flex-col">
     <%# 登録リンククリック時に、cats#newの新規登録フォーム部分をここに置換する %>
     <%= turbo_frame_tag "new_question_content" %>
-
-    <%= render @question_contents %>
+    <div id="question_contents">
+      <%= render @question_contents %>
+    </div>
   </div>
 </div>
