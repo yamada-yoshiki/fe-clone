@@ -7,15 +7,20 @@
   <div class="mb-3 d-flex justify-between">
     <h4>問題内容</h4>
     <div>
-      <%= render partial: 'admins/question_contents/sentence_modal' %>
-      <%= render partial: 'admins/question_contents/image_modal' %>
+      <%= link_to '問題文',
+                  new_admins_question_content_path,
+                  class: "btn btn-primary",
+                  remote: true,
+                  data: { turbo_frame: 'sentence_modal' }
+      %>
+      <%= render 'admins/question_contents/image_modal' %>
     </div>
 
   </div>
 
   <div class="flex-col">
     <%# 登録リンククリック時に、cats#newの新規登録フォーム部分をここに置換する %>
-    <%= turbo_frame_tag "new_question_content" %>
+    <%= turbo_frame_tag "sentence_modal" %>
     <div id="question_contents">
       <%= render @question_contents %>
     </div>
