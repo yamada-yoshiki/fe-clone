@@ -1,5 +1,6 @@
 class QuestionContent < ApplicationRecord
-  mount_uploader :image_path, QuestionImageUploader
+  # 未実装でエラーになっているので一旦コメントアウト
+  # mount_uploader :image_path, QuestionImageUploader
   belongs_to :question
 
   validate :check_content
