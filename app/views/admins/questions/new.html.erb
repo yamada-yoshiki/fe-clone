@@ -1,28 +1,24 @@
-<div class="w-full">
-  <h1 class="mb-4">問題新規作成</h1>
-  <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">問題名</label>
-    <input type="textarea" class="form-control" id="exampleFormControlInput1">
-  </div>
-  <div class="mb-3 d-flex justify-between">
-    <h4>問題内容</h4>
-    <div>
-      <%= link_to '問題文',
-                  new_admins_question_content_path,
-                  class: "btn btn-primary",
-                  remote: true,
-                  data: { turbo_frame: 'sentence_modal' }
-      %>
-      <%= render 'admins/question_contents/image_modal' %>
+<%= turbo_frame_tag "question_modal" do %>
+  <%= form_with(model: @question, url: admins_questions_path, local: true, data: { action: "turbo:submit-end->question-modal#close" }) do |form| %>
+    <!-- Modal -->
+    <div class="modal fade modal-lg" id="question_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-controller="question-modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div>
+              <%= turbo_frame_tag 'new_question_content' do %>
+              <h3 class="modal-title fs-5 mb-2">問題名</h3>
+                <%= form.text_field :sentence, class: 'h-100 border w-full rounded-end', rows: 1, placeholder: '管理用の名前を設定' %>              
+              <% end %>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <%= form.submit "作成", class: "btn btn-outline-primary mb-2" %>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+          </div>
+        </div>
+      </div>  
     </div>
-
-  </div>
-
-  <div class="flex-col">
-    <%# 登録リンククリック時に、cats#newの新規登録フォーム部分をここに置換する %>
-    <%= turbo_frame_tag "sentence_modal" %>
-    <div id="question_contents">
-      <%= render @question_contents %>
-    </div>
-  </div>
-</div>
+    <!-- Modal end -->
+  <% end %>
+<% end %>
