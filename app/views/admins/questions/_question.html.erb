@@ -1,7 +1,9 @@
-<li class="list-group-item d-flex justify-content-between">
-  <%= question.title %>
-  <button type="button" class="btn btn-outline-primary">
-    <%= link_to '詳細', admins_question_path(question) %>
-  </button>
-</li>
+<%= turbo_frame_tag question do %>
+  <li class="list-group-item d-flex justify-content-between">
+    <%= question.title %>
+    <button type="button" class="btn btn-outline-primary">
+      <%= link_to '詳細', admins_question_path(question) %>
+    </button>
+  </li>
+<% end %>
 
