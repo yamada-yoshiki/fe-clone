@@ -1,6 +1,6 @@
 class Admins::QuestionsController < Admins::ApplicationController
   def index
-    @questions = Question.all.order(:id)
+    @questions = Question.all.order(created_at: :desc).order(:id)
   end
 
   def new
@@ -10,7 +10,9 @@ class Admins::QuestionsController < Admins::ApplicationController
   def create
     @question = Question.new(create_params)
     @question_contents = []
-    @question.save!
+    unless @question.save
+      render :new
+    end
   end
 
   def edit
