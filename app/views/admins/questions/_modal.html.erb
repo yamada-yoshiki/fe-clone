@@ -1,0 +1,24 @@
+<%= turbo_frame_tag "question_modal" do %>
+    <!-- Modal -->
+    <div class="modal fade modal-lg" id="question_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-controller="question-modal">
+      <%= form_with(model: question, url: admins_questions_path, data: { action: "turbo:submit-end->question-modal#close" }) do |form| %>
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div>
+                <%= turbo_frame_tag 'new_question_content' do %>
+                <h3 class="modal-title fs-5 mb-2">問題名</h3>
+                  <%= form.text_field :title, class: 'h-100 border w-full rounded-end', rows: 1, placeholder: '管理用の名前を設定' %>              
+                <% end %>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <%= form.submit submit_text, class: "btn btn-outline-primary mb-2" %>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+            </div>
+          </div>
+        </div>  
+      <% end %>
+    </div>
+    <!-- Modal end -->
+<% end %>
