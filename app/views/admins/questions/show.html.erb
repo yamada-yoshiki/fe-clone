@@ -1,7 +1,7 @@
 <div class="w-full">
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">問題名</label>
-    <%= link_to @question.title, edit_admins_question_path(@question), class: 'w-full text-decoration-none text-body border rounded d-flex align-items-center fs-4 px-3', style: "height: 2em; white-space: pre-wrap;", remote: true, data: { turbo_frame: 'question_modal' } %>
+    <%= render 'question_title', question: @question%>
   </div>
   <%= turbo_frame_tag "question_modal" %>
   <div class="mb-3 d-flex justify-between">

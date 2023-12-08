@@ -1,7 +1,7 @@
 <%= turbo_frame_tag "question_modal" do %>
     <!-- Modal -->
     <div class="modal fade modal-lg" id="question_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-controller="question-modal">
-      <%= form_with(model: question, url: admins_questions_path, data: { action: "turbo:submit-end->question-modal#close" }) do |form| %>
+      <%= form_with(model: question, url: @question_form_url, data: { action: "turbo:submit-end->question-modal#close" }) do |form| %>
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-body">
