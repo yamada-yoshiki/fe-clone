@@ -1,10 +1,16 @@
 class Admins::QuestionContentsController < Admins::ApplicationController
   def new
-    @question_content = QuestionContent.new(question_id: params[:question_id])
+    question = Question.find(params[:question_id])
+    @question_content = question.question_contents.new
   end
 
   def edit
     @question_content = QuestionContent.find(params[:id])
+  end
+
+  def create
+    @question_content = QuestionContent.new(update_params)
+    @question_content.create!
   end
 
   def update
@@ -24,6 +30,10 @@ class Admins::QuestionContentsController < Admins::ApplicationController
   end
 
   def update_params
+    params.require(:question_content).permit(:sentence, :display_order)
+  end
+
+  def create_params
     params.require(:question_content).permit(:sentence, :display_order)
   end
 end
