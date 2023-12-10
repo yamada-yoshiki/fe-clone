@@ -11,12 +11,7 @@ export default class extends Controller {
     this.modal.show()
   }
 
-  close(event) {
-    // event.detail.successは、レスポンスが成功ならtrueを返す
-    // バリデーションエラー時はモーダルを閉じたくないので、成功時のみ閉じる
-    if (event.detail.success) {
-      // モーダルを閉じる
-      this.modal.hide()
-    }
+  close() {
+    this.modal.hide()
   }
 }
