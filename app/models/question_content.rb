@@ -9,6 +9,7 @@ class QuestionContent < ApplicationRecord
   
   def initialize(attributes = {})
     super(attributes)
+
     self.display_order = maximum_display_order(self.question_id) + 1
     self
   end
