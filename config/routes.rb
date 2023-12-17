@@ -7,6 +7,6 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :questions
-    resources :question_contents, only: %i[new]
+    resources :question_contents
   end
 end
