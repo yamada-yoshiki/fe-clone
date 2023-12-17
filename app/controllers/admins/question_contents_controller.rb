@@ -25,6 +25,11 @@ class Admins::QuestionContentsController < Admins::ApplicationController
     end
   end
 
+  def destroy
+    @question_content = QuestionContent.find(params[:id])
+    @question_content.destroy
+  end
+
   private
   def new_params
     params.permit(:question_id)
