@@ -20,9 +20,23 @@
 
   <div class="flex-col">
     <%# 登録リンククリック時に、cats#newの新規登録フォーム部分をここに置換する %>
-    <%= turbo_frame_tag "sentence_modal" %>
     <div id="question_contents">
       <%= render @question_contents %>
     </div>
   </div>
+
+  <div class="my-4 d-flex justify-between">
+    <h4>解答選択肢</h4>
+    <div>
+      <%= link_to '追加',
+                  new_admins_question_option_path(question_id: @question.id),
+                  class: "btn btn-primary",
+                  remote: true,
+                  data: { turbo_frame: 'option_modal' }
+      %>
+    </div>
+
+  </div>
+    <%= turbo_frame_tag "sentence_modal" %>
+    <%= turbo_frame_tag "option_modal" %>
 </div>

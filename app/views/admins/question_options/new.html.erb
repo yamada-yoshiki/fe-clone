@@ -1,0 +1,21 @@
+<%= turbo_frame_tag "option_modal" do %>
+  <!-- Modal -->
+  <div class="modal fade modal-lg" id="option_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-controller="option-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">選択肢を追加</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div><textarea class="border h-100 w-full" id="exampleFormControlTextarea1" rows="3"></textarea></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">追加</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+        </div>
+      </div>
+    </div>  
+  </div>
+  <!-- Modal end -->
+<% end %>
