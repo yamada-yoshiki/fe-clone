@@ -29,8 +29,8 @@ class Admins::QuestionsController < Admins::ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    @question_contents = @question.question_contents.order(:created_at).order(:id)
-    @question_options = @question.question_options
+    @question_contents = @question.question_contents.order(:display_order)
+    @question_options = @question.question_options.order(:display_order)
   end
 
   private
