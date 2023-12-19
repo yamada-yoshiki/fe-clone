@@ -10,19 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_804_145_327) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_19_084606) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'admins', force: :cascade do |t|
-    t.string 'email', default: '', null: false
-    t.string 'encrypted_password', default: '', null: false
-    t.string 'reset_password_token'
-    t.datetime 'reset_password_sent_at'
-    t.datetime 'remember_created_at'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['email'], name: 'index_admins_on_email', unique: true
-    t.index ['reset_password_token'], name: 'index_admins_on_reset_password_token', unique: true
+  create_table "admins", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
+
+  create_table "question_contents", force: :cascade do |t|
+    t.string "sentence"
+    t.string "image_path"
+    t.integer "display_order", null: false
+    t.bigint "question_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_question_contents_on_question_id"
+    t.check_constraint "sentence IS NOT NULL OR image_path IS NOT NULL", name: "check_content"
+  end
+
+  create_table "question_option_images", force: :cascade do |t|
+    t.string "path", default: "", null: false
+    t.bigint "question_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_question_option_images_on_question_id"
+  end
+
+  create_table "question_options", force: :cascade do |t|
+    t.string "sentence", default: "", null: false
+    t.integer "display_order", null: false
+    t.bigint "question_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_question_options_on_question_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "question_contents", "questions"
+  add_foreign_key "question_option_images", "questions"
+  add_foreign_key "question_options", "questions"
 end

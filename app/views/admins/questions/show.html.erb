@@ -1,0 +1,49 @@
+<div class="w-full">
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">問題名</label>
+    <%= render 'question_title', question: @question%>
+  </div>
+  <%= turbo_frame_tag "question_modal" %>
+  <div class="mb-3 d-flex justify-between">
+    <h4>問題内容</h4>
+    <div>
+      <%= link_to '問題文',
+                  new_admins_question_content_path(question_id: @question.id),
+                  class: "btn btn-primary",
+                  remote: true,
+                  data: { turbo_frame: 'sentence_modal' }
+      %>
+      <%= render 'admins/question_contents/image_modal' %>
+    </div>
+
+  </div>
+
+  <div class="flex-col">
+    <%# 登録リンククリック時に、cats#newの新規登録フォーム部分をここに置換する %>
+    <div id="question_contents">
+      <%= render @question_contents %>
+    </div>
+  </div>
+
+  <div class="my-4 d-flex justify-between">
+    <h4>解答選択肢</h4>
+    <div>
+      <%= link_to '追加',
+                  new_admins_question_option_path(question_id: @question.id),
+                  class: "btn btn-primary",
+                  remote: true,
+                  data: { turbo_frame: 'option_modal' }
+      %>
+    </div>
+  </div>
+
+  <div class="flex-col">
+    <%# 選択肢が作成されたらcreate.turbo_stream.erbの内容が以下の箇所に入る %>
+    <div id="question_options">
+      <%= render @question_options %>
+    </div>
+  </div>
+
+  <%= turbo_frame_tag "sentence_modal" %>
+  <%= turbo_frame_tag "option_modal" %>
+</div>

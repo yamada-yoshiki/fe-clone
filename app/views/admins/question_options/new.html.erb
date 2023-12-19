@@ -1,0 +1,24 @@
+<%= turbo_frame_tag "option_modal" do %>
+  <!-- Modal -->
+  <div class="modal fade modal-lg" id="option_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-controller="option-modal">
+    <%= form_with(model: @question_option, url: admins_question_options_path, local: true, data: { action: "turbo:submit-end->option-modal#close" }) do |form| %>
+      <%= form.hidden_field :question_id, value: @question.id %>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">選択肢を追加</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <%= form.text_area :sentence, class: 'h-100 border w-full rounded', rows: 3 %>
+          </div>
+          <div class="modal-footer">
+            <%= form.submit "追加", class: "btn btn-outline-primary mb-2" %>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+          </div>
+        </div>
+      </div>  
+    <% end %>
+  </div>
+  <!-- Modal end -->
+<% end %>

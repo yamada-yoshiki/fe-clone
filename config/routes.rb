@@ -7,5 +7,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :questions
+    resources :question_contents
+    resources :question_options
   end
 end
