@@ -35,8 +35,15 @@
                   data: { turbo_frame: 'option_modal' }
       %>
     </div>
-
   </div>
-    <%= turbo_frame_tag "sentence_modal" %>
-    <%= turbo_frame_tag "option_modal" %>
+
+  <div class="flex-col">
+    <%# 選択肢が作成されたらcreate.turbo_stream.erbの内容が以下の箇所に入る %>
+    <div id="question_options">
+      <%= render @question_options %>
+    </div>
+  </div>
+
+  <%= turbo_frame_tag "sentence_modal" %>
+  <%= turbo_frame_tag "option_modal" %>
 </div>
