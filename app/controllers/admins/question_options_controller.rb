@@ -10,6 +10,11 @@ class Admins::QuestionOptionsController < Admins::ApplicationController
     @question_option.save!
   end
 
+  def destroy
+    @question_option = QuestionOption.find(params[:id])
+    @question_option.destroy
+  end
+
   private
   def new_params
     params.permit(:question_id)
