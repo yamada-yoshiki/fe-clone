@@ -1,5 +1,5 @@
 <div class="w-full">
-  <div class="mb-3">
+  <div class="mb-5">
     <label for="exampleFormControlInput1" class="form-label">問題名</label>
     <%= render 'question_title', question: @question%>
   </div>
@@ -18,14 +18,14 @@
 
   </div>
 
-  <div class="flex-col">
+  <div class="flex-col mb-5">
     <%# 登録リンククリック時に、cats#newの新規登録フォーム部分をここに置換する %>
     <div id="question_contents">
       <%= render @question_contents %>
     </div>
   </div>
 
-  <div class="my-4 d-flex justify-between">
+  <div class="mb-3 d-flex justify-between">
     <h4>解答選択肢</h4>
     <div>
       <%= link_to '追加',
