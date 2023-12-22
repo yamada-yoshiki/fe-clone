@@ -5,15 +5,16 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">問題文を追加</h1>
+              <% type = @modal_type == 'sentence' ? '問題文' : '画像' %>
+              <h1 class="modal-title fs-5" id="exampleModalLabel"><%= type %>を追加</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <div>
-                <%# 全体をturbo_frame_tagで囲う %>
-                <%# 編集をクリックすると、_cat.html.erbの<turbo-frame>部分がこの部分に置換される %>
-                <%= turbo_frame_tag 'new_question_content' do %>
+                <% if @modal_type == 'sentence' %>
                   <%= form.text_area :sentence, class: 'h-100 border w-full rounded', rows: 5 %>              
+                <% else %>
+                    <%= form.file_field :image_path %>
                 <% end %>
               </div>
             </div>
