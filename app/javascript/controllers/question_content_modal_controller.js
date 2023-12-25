@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import { Modal } from "bootstrap"
 
-// Connects to data-controller="sentence-modal"
+// Connects to data-controller="question-content-modal"
 export default class extends Controller {
   connect() {
     this.modal = new Modal(this.element)
