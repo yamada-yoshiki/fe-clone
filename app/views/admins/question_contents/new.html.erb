@@ -1,6 +1,6 @@
-<%= turbo_frame_tag "sentence_modal" do %>
-    <div class="modal fade modal-lg" id="sentence_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-controller="sentence-modal">
-      <%= form_with(model: @question_content, url: admins_question_contents_path, local: true, data: { action: "turbo:submit-end->sentence-modal#close" }) do |form| %>
+<%= turbo_frame_tag "question_content_modal" do %>
+    <div class="modal fade modal-lg" id="question_content_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-controller="question-content-modal">
+      <%= form_with(model: @question_content, url: admins_question_contents_path, local: true, data: { action: "turbo:submit-end->question-content-modal#close" }) do |form| %>
         <%= form.hidden_field :question_id, value: @question.id %>
         <div class="modal-dialog">
           <div class="modal-content">
