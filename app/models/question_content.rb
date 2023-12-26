@@ -1,6 +1,5 @@
 class QuestionContent < ApplicationRecord
-  # 未実装でエラーになっているので一旦コメントアウト
-  # mount_uploader :image_path, QuestionImageUploader
+  mount_uploader :image_path, QuestionImageUploader
   belongs_to :question
 
   validate :check_content
@@ -12,6 +11,10 @@ class QuestionContent < ApplicationRecord
 
     self.display_order = maximum_display_order(self.question_id) + 1
     self
+  end
+
+  def is_image?
+    self.image_path.present?
   end
   
 
