@@ -1,4 +1,7 @@
 <div class="w-full pb-8 mb-6">
+  <div class="mb-4">
+    <%= link_to '一覧へ', admins_questions_path %>
+  </div>
   <div class="mb-5">
     <label for="exampleFormControlInput1" class="form-label">問題名</label>
     <%= render 'question_title', question: @question%>
