@@ -6,7 +6,9 @@
       </svg>
     </div>
     <% if question_content.is_image? %>
-      <%= image_tag(question_content.image_path.url) %>
+      <div class="border h-100 w-full rounded-end px-3 py-2 d-flex align-items-center justify-content-center">
+        <%= image_tag(question_content.image_path.url) %>
+      </div>
     <% else %>
       <div class="col-10" style="height: 9em; white-space: pre-wrap;"><p class="border h-100 w-full rounded-end px-3 py-2" ><%= question_content.sentence %></p></div>
     <% end %>
