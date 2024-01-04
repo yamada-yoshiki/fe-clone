@@ -30,10 +30,10 @@ class Admins::QuestionOptionsController < Admins::ApplicationController
   end
 
   def create_params
-    params.require(:question_option).permit(:question_id, :sentence, :display_order)
+    params.require(:question_option).permit(:question_id, :sentence, :display_order, :correct_flag)
   end
 
   def update_params
-    params.require(:question_option).permit(:sentence, :display_order)
+    params.require(:question_option).permit(:sentence, :display_order, :correct_flag)
   end
 end

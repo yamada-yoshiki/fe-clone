@@ -9,15 +9,19 @@
             <h1 class="modal-title fs-5" id="exampleModalLabel">選択肢を追加</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            <%= form.text_area :sentence, class: 'h-100 border w-full rounded', rows: 3 %>
+          <div class="modal-body px-5 flex-column">
+            <div class="d-flex items-center mb-3">
+              <%= form.text_area :sentence, class: 'h-100 border w-75 rounded me-3', rows: 3 %>
+              <%= form.check_box(:correct_flag, {class: 'me-1'}, checked_value = true, unchecked_value = false) %>
+              <%= form.label :correct_flag, '正解フラグ' %>
+            </div>
           </div>
           <div class="modal-footer">
             <%= form.submit "追加", class: "btn btn-outline-primary mb-2" %>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
           </div>
         </div>
-      </div>  
+      </div>
     <% end %>
   </div>
   <!-- Modal end -->
