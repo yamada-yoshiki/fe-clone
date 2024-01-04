@@ -5,7 +5,20 @@
         <path d="M2 8a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm3 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0-3a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
       </svg>
     </div>
-    <div class="col-10" style="height: 6em; white-space: pre-wrap;"><p class="border h-100 w-full rounded-end px-3 py-2" ><%= question_option.sentence %></p></div>
+    <div class="col-10 d-flex flex-row items-center" style="height: 6em; white-space: pre-wrap;">
+      <div class="border h-100 w-full px-3 py-2 d-flex items-center">
+        <p class="mb-0"><%= question_option.sentence %></p>
+      </div>
+      <% if question_option.correct_flag %>
+        <div class="border rounded-end h-100 d-flex items-center col-1 justify-content-center text-bg-success">
+          <h2 class="mb-0"><i class="bi bi-check2"></i></h2>
+        </div>
+      <% else %>
+        <div class="border rounded-end h-100 d-flex items-center col-1 justify-content-center text-bg-danger">
+          <h2 class="mb-0"><i class="bi bi-x"></i></i></h2>
+        </div>
+      <% end %>
+    </div>
     <div class="col-1 flex flex-column align-content-start align-items-end justify-content-center">
       <%= link_to "編集", edit_admins_question_option_path(question_option), class: "btn btn-outline-primary mb-2" %>
       <%= button_to "削除", admins_question_option_path(question_option), method: :delete, class: "btn btn-outline-danger", form: { data: { turbo_confirm: "本当に削除しますか？" } } %>
