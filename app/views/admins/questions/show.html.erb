@@ -2,6 +2,14 @@
   <div class="mb-4">
     <%= link_to '一覧へ', admins_questions_path %>
   </div>
+  <div class="mb-3 d-flex justify-between">
+    <% if @question.is_published? %>
+      <button type="button" class="btn btn-success">公開中</button>
+    <% else %>
+      <button type="button" class="btn btn-secondary">非公開</button>
+    <% end %>
+    <button type="button" class="btn btn-danger">問題を削除</button>
+  </div>
   <div class="mb-5">
     <label for="exampleFormControlInput1" class="form-label">問題名</label>
     <%= render 'question_title', question: @question%>
