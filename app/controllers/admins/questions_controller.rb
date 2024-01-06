@@ -33,6 +33,13 @@ class Admins::QuestionsController < Admins::ApplicationController
     @question_options = @question.question_options.order(:display_order)
   end
 
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+
+    redirect_to admins_questions_url
+  end
+
   private
   def create_params
     params.require(:question).permit(:title)

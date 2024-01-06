@@ -8,7 +8,7 @@
     <% else %>
       <button type="button" class="btn btn-secondary">非公開</button>
     <% end %>
-    <button type="button" class="btn btn-danger">問題を削除</button>
+    <%= button_to "問題を削除", admins_question_path(@question), method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: "本当に削除しますか？\n問題に紐付いている選択肢、画像など全て削除されます。" } } %>
   </div>
   <div class="mb-5">
     <label for="exampleFormControlInput1" class="form-label">問題名</label>
