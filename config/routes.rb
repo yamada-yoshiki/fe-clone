@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     resources :questions
     resources :question_contents
     resources :question_options
+    post '/question/publish', to: 'questions#publish'
+    post '/question/unpublish', to: 'questions#unpublish'
   end
 end

@@ -8,4 +8,12 @@ class Question < ApplicationRecord
   def is_published?
     self.published_at.present?
   end
+
+  def publish!
+    self.update!(published_at: Time.current)
+  end
+
+  def unpublish!
+    self.update!(published_at: nil)
+  end
 end

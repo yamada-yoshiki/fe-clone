@@ -40,6 +40,23 @@ class Admins::QuestionsController < Admins::ApplicationController
     redirect_to admins_questions_url
   end
 
+  def publish
+    @question = Question.find(params[:id])
+    
+    if QuestionPublishVerifier.new(@question).can_publish?
+      @question.publish!
+    end
+
+    redirect_to admins_question_path(@question)
+  end
+
+  def unpublish
+    @question = Question.find(params[:id])
+    @question.unpublish!
+
+    redirect_to admins_question_path(@question)
+  end
+
   private
   def create_params
     params.require(:question).permit(:title)

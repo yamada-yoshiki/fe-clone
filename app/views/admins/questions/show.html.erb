@@ -4,9 +4,9 @@
   </div>
   <div class="mb-3 d-flex justify-between">
     <% if @question.is_published? %>
-      <button type="button" class="btn btn-success">公開中</button>
+      <%= button_to "公開中", admins_question_unpublish_path(id: @question.id), class: "btn btn-success", form: { data: { turbo_confirm: "非公開にしますか？" } } %>
     <% else %>
-      <button type="button" class="btn btn-secondary">非公開</button>
+      <%= button_to "非公開", admins_question_publish_path(id: @question.id), class: "btn btn-secondary", form: { data: { turbo_confirm: "本当に公開してよろしいですか？" } } %>
     <% end %>
     <%= button_to "問題を削除", admins_question_path(@question), method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: "本当に削除しますか？\n問題に紐付いている選択肢、画像など全て削除されます。" } } %>
   </div>
