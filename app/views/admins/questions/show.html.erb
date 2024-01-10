@@ -8,7 +8,9 @@
     <% else %>
       <%= button_to "非公開", admins_question_publish_path(id: @question.id), class: "btn btn-secondary", form: { data: { turbo_confirm: "本当に公開してよろしいですか？" } } %>
     <% end %>
-    <%= button_to "問題を削除", admins_question_path(@question), method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: "本当に削除しますか？\n問題に紐付いている選択肢、画像など全て削除されます。" } } %>
+    <% unless @question.is_published? %>
+      <%= button_to "問題を削除", admins_question_path(@question), method: :delete, class: "btn btn-danger", form: { data: { turbo_confirm: "本当に削除しますか？\n問題に紐付いている選択肢、画像など全て削除されます。" } } %>
+    <% end %>
   </div>
   <div class="mb-5">
     <label for="exampleFormControlInput1" class="form-label">問題名</label>
@@ -17,46 +19,37 @@
   <%= turbo_frame_tag "question_modal" %>
   <div class="mb-3 d-flex justify-between">
     <h4>問題内容</h4>
-    <div>
-      <%= link_to '問題文',
-                  new_admins_question_content_path(question_id: @question.id, type: 'sentence'),
-                  class: "btn btn-primary",
-                  remote: true,
-                  data: { turbo_frame: 'question_content_modal' }
-      %>
-      <%= link_to '画像',
-                  new_admins_question_content_path(question_id: @question.id, type: 'image'),
-                  class: "btn btn-primary",
-                  remote: true,
-                  data: { turbo_frame: 'question_content_modal' }
-      %>
-    </div>
+    <% unless @question.is_published? %>
+      <%= render 'add_question_contents_buttons', question: @question %>
+    <% end %>
 
   </div>
 
   <div class="flex-col mb-5">
     <%# 登録リンククリック時に、cats#newの新規登録フォーム部分をここに置換する %>
     <div id="question_contents">
-      <%= render @question_contents %>
+      <%= render @question_contents, question: @question %>
     </div>
   </div>
 
   <div class="mb-3 d-flex justify-between">
     <h4>解答選択肢</h4>
-    <div>
-      <%= link_to '追加',
-                  new_admins_question_option_path(question_id: @question.id),
-                  class: "btn btn-primary",
-                  remote: true,
-                  data: { turbo_frame: 'option_modal' }
-      %>
-    </div>
+    <% unless @question.is_published? %>
+      <div>
+        <%= link_to '追加',
+                    new_admins_question_option_path(question_id: @question.id),
+                    class: "btn btn-primary",
+                    remote: true,
+                    data: { turbo_frame: 'option_modal' }
+        %>
+      </div>
+    <% end %>
   </div>
 
   <div class="flex-col">
     <%# 選択肢が作成されたらcreate.turbo_stream.erbの内容が以下の箇所に入る %>
     <div id="question_options">
-      <%= render @question_options %>
+      <%= render @question_options, question: @question %>
     </div>
   </div>
 

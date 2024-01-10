@@ -1,3 +1,7 @@
-<%= turbo_frame_tag @question do %>
-  <%= link_to question.title, edit_admins_question_path(question), class: 'w-full text-decoration-none text-body border rounded d-flex align-items-center fs-4 px-3', style: "height: 2em; white-space: pre-wrap;", remote: true, data: { turbo_frame: 'question_modal' } %>
+<% if question.is_published? %>
+  <p class='w-full text-decoration-none text-body border rounded d-flex align-items-center fs-4 px-3'><%= question.title %></p>
+<% else %>
+  <%= turbo_frame_tag question do %>
+    <%= link_to question.title, edit_admins_question_path(question), class: 'w-full text-decoration-none text-body border rounded d-flex align-items-center fs-4 px-3', style: "height: 2em; white-space: pre-wrap;", remote: true, data: { turbo_frame: 'question_modal' } %>
+  <% end %>
 <% end %>

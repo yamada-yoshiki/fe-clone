@@ -20,8 +20,10 @@
       <% end %>
     </div>
     <div class="col-1 flex flex-column align-content-start align-items-end justify-content-center">
-      <%= link_to "編集", edit_admins_question_option_path(question_option), class: "btn btn-outline-primary mb-2" %>
-      <%= button_to "削除", admins_question_option_path(question_option), method: :delete, class: "btn btn-outline-danger", form: { data: { turbo_confirm: "本当に削除しますか？" } } %>
+      <% unless question.is_published? %>
+        <%= link_to "編集", edit_admins_question_option_path(question_option), class: "btn btn-outline-primary mb-2" %>
+        <%= button_to "削除", admins_question_option_path(question_option), method: :delete, class: "btn btn-outline-danger", form: { data: { turbo_confirm: "本当に削除しますか？" } } %>
+      <% end %>
     </div>
   </div>
 <% end %>

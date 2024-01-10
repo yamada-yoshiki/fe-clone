@@ -1,0 +1,14 @@
+<div>
+  <%= link_to '問題文',
+              new_admins_question_content_path(question_id: question.id, type: 'sentence'),
+              class: "btn btn-primary",
+              remote: true,
+              data: { turbo_frame: 'question_content_modal' }
+  %>
+  <%= link_to '画像',
+              new_admins_question_content_path(question_id: question.id, type: 'image'),
+              class: "btn btn-primary",
+              remote: true,
+              data: { turbo_frame: 'question_content_modal' }
+  %>
+</div>

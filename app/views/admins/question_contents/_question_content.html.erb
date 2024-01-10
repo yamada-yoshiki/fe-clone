@@ -13,8 +13,10 @@
       <div class="col-10" style="height: 9em; white-space: pre-wrap;"><p class="border h-100 w-full rounded-end px-3 py-2" ><%= question_content.sentence %></p></div>
     <% end %>
     <div class="col-1 flex flex-column align-content-start align-items-end justify-content-center">
-      <%= link_to "編集", edit_admins_question_content_path(question_content), class: "btn btn-outline-primary mb-2" %>
-      <%= button_to "削除", admins_question_content_path(question_content), method: :delete, class: "btn btn-outline-danger", form: { data: { turbo_confirm: "本当に削除しますか？" } } %>
+      <% unless question.is_published? %>
+        <%= link_to "編集", edit_admins_question_content_path(question_content), class: "btn btn-outline-primary mb-2" %>
+        <%= button_to "削除", admins_question_content_path(question_content), method: :delete, class: "btn btn-outline-danger", form: { data: { turbo_confirm: "本当に削除しますか？" } } %>
+      <% end %>
     </div>
   </div>
 <% end %>
