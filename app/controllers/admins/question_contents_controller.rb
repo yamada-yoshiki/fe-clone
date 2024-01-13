@@ -16,14 +16,9 @@ class Admins::QuestionContentsController < Admins::ApplicationController
   end
 
   def update
-    # TODO:form_withでcreate,updateに振り分けてもらうようにして
-    if params[:id]
-      @question_content = QuestionContent.find(params[:id])
-      @question_content.update!(update_params)
-    else
-      @question_content = QuestionContent.new(update_params)
-      @question_content.save
-    end
+    @question_content = QuestionContent.find(params[:id])
+    @question_content.update!(update_params)
+    @question = @question_content.question
   end
 
   def destroy
