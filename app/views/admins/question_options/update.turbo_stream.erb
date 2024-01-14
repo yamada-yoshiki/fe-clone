@@ -1,4 +1,4 @@
 <%= turbo_stream.replace @question_option do %>
   <%= render partial: "admins/question_options/question_option",
-             locals: { question_option: @question_option } %>
+             locals: { question_option: @question_option, question: @question } %>
 <% end %>

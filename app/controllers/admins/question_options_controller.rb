@@ -17,6 +17,7 @@ class Admins::QuestionOptionsController < Admins::ApplicationController
   def update
     @question_option = QuestionOption.find(params[:id])
     @question_option.update!(update_params)
+    @question = @question_option.question
   end
 
   def destroy
